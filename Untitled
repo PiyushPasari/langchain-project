@@ -1,0 +1,17 @@
+from agent import run_agent
+from llm import call_llm
+
+messages = [
+    {"role": "system", "content": "You are a helpful assistant."}
+]
+
+while True:
+    user = input("User: ")
+
+    messages.append({"role": "user", "content": user})
+
+    response = run_agent(messages, call_llm)
+
+    print("Agent:", response)
+
+    messages.append({"role": "assistant", "content": response})
